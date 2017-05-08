@@ -4,32 +4,35 @@ function MiembroSquad(nombreApellido, edad, hobbies){
 	this.hobbies = hobbies;
 	this.mostrar = function (){
 		var imprimir = document.getElementById("compas");
-		squad.forEach(function(el){
 		var divVacio = document.createElement("div");
 		divVacio.className = "usuario";
-		divVacio.innerHTML += "<br>" + "<b>Nombre:</b> " + el.nombreApellido + "<br><b>Edad:</b> " + el.edad + "<br><b>Hobbies:</b><br>";
+		var divTexto = document.createElement("div");
+		divTexto.className = "texto";
+		divVacio.innerHTML += "<br>" + "<b>Nombre:</b> " + nombreApellido + "<br><b>Edad:</b> " + edad + "<br><b>Hobbies:</b><br>";
 		imprimir.appendChild(divVacio) 
 		var lista = document.createElement("li");
-		lista.innerHTML = el.hobbies.forEach(function(e){
+		lista.innerHTML = hobbies.forEach(function(e){
 		divVacio.innerHTML += "<li>" + e + "</li>";
 		});
+		divVacio.appendChild(divTexto);
 		var divComentarios = document.createElement("div");
 		divComentarios.className = "comentarios";
 		var form = document.createElement("form");
 		var input = document.createElement("textarea");
 		var boton = document.createElement("button");
-		var botonTexto = document.createTextNode("Agregar comentario");
+		var botonTexto = document.createTextNode("Comentar");
 		boton.appendChild(botonTexto);
 		boton.className = "boton1";
 		input.id = "comentarioPara" + squad.indexOf(this);
 		input.placeholder = "Escribe aquí un comentario..."
 		form.appendChild(input);
 		form.appendChild(boton);
-		var comentarios = document.createElement("b");
+		var comentarios = document.createElement("H4");
 		var comentariosTexto = document.createTextNode("Comentarios: ");
 		comentarios.appendChild(comentariosTexto);
 		var divComentariosUsuario = document.createElement("div");
 		divComentariosUsuario.id = "comentarios" + squad.indexOf(this);
+
 		boton.onclick = function agregarComentario(){
 			document.getElementById(divComentariosUsuario.id).innerHTML += '<p>' + input.value + "</p><button onclick=like()>Like</button>";
 				return false;
@@ -39,8 +42,6 @@ function MiembroSquad(nombreApellido, edad, hobbies){
 		divComentarios.appendChild(divComentariosUsuario);
 		divVacio.appendChild(divComentarios);
 		imprimir.appendChild(divVacio);
-
-		});
 	}
 
 }
