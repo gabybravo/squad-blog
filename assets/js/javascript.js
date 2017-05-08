@@ -4,7 +4,7 @@ function MiembroSquad(nombreApellido, edad, hobbies){
 	this.edad = edad;
 	this.hobbies = hobbies;
 	this.imagen = new Image();
-	this.imagen.src = "assets/images/image.PNG";
+	this.imagen.src = "assets/images/image.png";
 
 //Este método es el que refleja cada dato de mis compañeras y contiene los botones para agregar comentario y dar like:
 	this.mostrar = function (){
@@ -25,6 +25,8 @@ function MiembroSquad(nombreApellido, edad, hobbies){
 		divComentarios.className = "comentarios";
 		var form = document.createElement("form");
 		var input = document.createElement("textarea");
+		input.setAttribute('cols',50);
+		input.setAttribute('rows',8);
 		var boton = document.createElement("button");
 		var botonTexto = document.createTextNode("Comentar");
 		boton.appendChild(botonTexto);
